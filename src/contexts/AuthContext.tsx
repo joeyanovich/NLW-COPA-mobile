@@ -7,7 +7,7 @@ interface UserProps {
 
 export interface AuthContextDataProps {
     user: UserProps;
-    signIn: () => Promise<void>
+    signIn: () => Promise<void>;
 }
 
 interface AuthProviderProps {
@@ -16,10 +16,12 @@ interface AuthProviderProps {
 
 export const AuthContext = createContext({} as AuthContextDataProps);
 
-export function AuthContextProvider({ children }: AuthProviderProps){
+export function AuthContextProvider({ children }: AuthProviderProps) {
+
     async function signIn() {
         console.log('Vamos logar!');
     }
+
     return (
         <AuthContext.Provider value={{
             signIn,
@@ -30,5 +32,5 @@ export function AuthContextProvider({ children }: AuthProviderProps){
         }}>
             {children}
         </AuthContext.Provider>
-    )
+    );
 }
